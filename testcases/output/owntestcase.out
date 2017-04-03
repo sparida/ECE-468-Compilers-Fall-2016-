@@ -1,0 +1,185 @@
+;IR code
+;LABEL main
+;LINK
+;READI i
+;STOREI 0 $T1
+;STOREI $T1 i
+;LABEL label1
+;STOREI 1 $T2
+;ADDI i $T2 $T3
+;STOREI $T3 i
+;STOREI 7 $T4
+;NE i $T4 label2
+;STOREI 5 $T5
+;ADDI b $T5 $T6
+;STOREI $T6 b
+;JUMP label4
+;LABEL label2
+;STOREI 8 $T7
+;NE i $T7 label3
+;STOREI 10 $T8
+;ADDI b $T8 $T9
+;STOREI $T9 b
+;JUMP label4
+;LABEL label3
+;STOREI 0 $T10
+;STOREI $T10 j
+;LABEL label5
+;STOREI 1 $T11
+;ADDI b $T11 $T12
+;STOREI $T12 b
+;STOREI 1 $T13
+;ADDI j $T13 $T14
+;STOREI $T14 j
+;STOREI 10 $T15
+;NE i $T15 label6
+;STOREI 1 $T16
+;SUBI b $T16 $T17
+;STOREI $T17 b
+;LABEL label6
+;STOREI i $T18
+;NE j $T18 label5
+;STOREI 10 $T19
+;NE i $T19 label8
+;STOREI 10 $T20
+;ADDI b $T20 $T21
+;STOREI $T21 b
+;LABEL label8
+;LABEL label4
+;STOREI 1 $T22
+;ADDI i $T22 $T23
+;STOREI $T23 i
+;STOREI 1 $T24
+;SUBI i $T24 $T25
+;STOREI $T25 i
+;STOREI 10 $T26
+;NE i $T26 label1
+;LABEL label11
+;LABEL label13
+;STOREI 1 $T27
+;SUBI i $T27 $T28
+;STOREI $T28 i
+;STOREI 5 $T29
+;NE i $T29 label13
+;JUMP label14
+;JUMP label15
+;LABEL label14
+;STOREI 5 $T30
+;NE i $T30 label15
+;LABEL label16
+;STOREI 1 $T31
+;ADDI i $T31 $T32
+;STOREI $T32 i
+;STOREI 10 $T33
+;NE i $T33 label16
+;LABEL label15
+;WRITEI i
+;WRITEI b
+
+;tiny code
+var b
+var j
+var i
+push
+push r0
+push r1
+push r2
+push r3
+jsr main
+sys halt
+label main
+link 0
+sys readi i
+move 0 r0
+move r0 i
+label label1
+move 1 r1
+move i r2
+addi r1 r2
+move r2 i
+move 7 r3
+cmpi i r3
+jne label2
+move 5 r4
+move b r5
+addi r4 r5
+move r5 b
+jmp label4
+label label2
+move 8 r6
+cmpi i r6
+jne label3
+move 10 r7
+move b r8
+addi r7 r8
+move r8 b
+jmp label4
+label label3
+move 0 r9
+move r9 j
+label label5
+move 1 r10
+move b r11
+addi r10 r11
+move r11 b
+move 1 r12
+move j r13
+addi r12 r13
+move r13 j
+move 10 r14
+cmpi i r14
+jne label6
+move 1 r15
+move b r16
+subi r15 r16
+move r16 b
+label label6
+move i r17
+cmpi j r17
+jne label5
+move 10 r18
+cmpi i r18
+jne label8
+move 10 r19
+move b r20
+addi r19 r20
+move r20 b
+label label8
+label label4
+move 1 r21
+move i r22
+addi r21 r22
+move r22 i
+move 1 r23
+move i r24
+subi r23 r24
+move r24 i
+move 10 r25
+cmpi i r25
+jne label1
+label label11
+label label13
+move 1 r26
+move i r27
+subi r26 r27
+move r27 i
+move 5 r28
+cmpi i r28
+jne label13
+jmp label14
+jmp label15
+label label14
+move 5 r29
+cmpi i r29
+jne label15
+label label16
+move 1 r30
+move i r31
+addi r30 r31
+move r31 i
+move 10 r32
+cmpi i r32
+jne label16
+label label15
+sys writei i
+sys writei b

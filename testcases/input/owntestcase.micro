@@ -1,0 +1,52 @@
+PROGRAM step4
+BEGIN
+
+	INT i, j, b;
+
+
+	FUNCTION VOID main()
+	BEGIN
+
+		READ(i);
+		i := 0;
+		DO
+			i := i + 1;
+			IF(i = 7)
+				b := b + 5 ; 
+			ELSIF(i = 8)
+				b := b + 10;
+			ELSIF(TRUE)
+				j := 0;
+				DO
+					b := b + 1;
+					j := j + 1;
+					IF(i = 10)
+						b := b - 1;
+					ENDIF
+				WHILE(j != i);
+				IF(i = 10)
+					b := b + 10;
+				ENDIF
+			ENDIF
+			i := i + 1; 
+			i := i - 1;
+		WHILE(i != 10);
+		
+		IF(TRUE)
+		ENDIF
+
+		DO
+			i := i - 1;
+		WHILE(i != 5);
+
+		IF(FALSE)
+		ELSIF(i = 5)
+			DO
+				i := i + 1;
+			WHILE(i != 10);
+		ENDIF
+
+		WRITE (i);
+		WRITE (b);
+	END
+END
